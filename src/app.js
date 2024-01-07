@@ -8,17 +8,19 @@ const products = JSON.parse(fs.readFileSync(`${__dirname}/data/products.json`));
 // Middlewares
 app.use(express.json());
 
-// Write GET endpoint for sending all the products to client here
+// GET endpoint for sending all the products to the client
 // Endpoint - /api/v1/products
-app.get("/api/v1/products",(req,res)=>{
-  if(products.length){
+app.get("/api/v1/products", (req, res) => {
+  if (products.length > 0) {
     res.status(200).json({
-      status:"success",
-      message:"Product fetched successfully",
-      data:{product},
+      status: "success",
+      message: "Products fetched successfully",
+      data: {
+        products: products // Return all products
+      }
     });
-  }else {
-    res.status(404).json({message:"Product not found"})
+  } else {
+    res.status(404).json({ message: "Products not found" });
   }
 });
 
