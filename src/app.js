@@ -14,13 +14,13 @@ app.get("/api/v1/products", (req, res) => {
   if (products.length > 0) {
     res.status(200).json({
       status: "success",
-      message: "Products fetched successfully",
+      message: "Product fetched successfully",
       data: {
         products: products // Return all products
       }
     });
   } else {
-    res.status(404).json({ message: "Products not found" });
+    res.status(404).json({ message: "Product not found" });
   }
 });
 
